@@ -37,9 +37,7 @@ jobs:
           key: build-pubspec-${{ hashFiles('**/pubspec.lock') }}
           restore-keys: |
             build-pubspec-
-      - name: Generate Dart config file
-        run: flutter pub run videoapp:config
-      - name: Build widgetbook for web
+      - name: Build flutter web
         run: flutter build web -t lib/main.dart
       - name: Setup Pages
         uses: actions/configure-pages@v4
