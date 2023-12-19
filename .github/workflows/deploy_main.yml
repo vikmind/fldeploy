@@ -1,5 +1,4 @@
-
-name: Build flutter web
+name: Build main app
 
 on:
   push:
@@ -17,7 +16,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://vikmind.github.io/fldeploy/
+      url: https://vikmind.github.io/fldeploy//?sha=${{ github.sha }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

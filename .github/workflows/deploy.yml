@@ -1,4 +1,4 @@
-name: Build flutter web
+name: Build review app
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://vikmind.github.io/fldeploy/${{ github.head_ref }}/
+      url: https://vikmind.github.io/fldeploy/${{ github.head_ref }}/?sha=${{ github.sha }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
