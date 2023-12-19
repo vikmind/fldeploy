@@ -4,12 +4,10 @@ name: Build flutter web
 on:
   push:
     branches:
-      - none
+      - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: "pages"
@@ -19,7 +17,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://vikmind.github.io/fldeploy/${{ github.head_ref }}/
+      url: https://vikmind.github.io/fldeploy/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -39,14 +37,9 @@ jobs:
           restore-keys: |
             build-pubspec-
       - name: Build flutter web
-        # run: flutter build web -t lib/main.dart --base-href /fldeploy/${{ github.head_ref }}/
         run: flutter build web -t lib/main.dart --base-href /fldeploy/
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: Deploy 🚀
+        id: github-pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: 'build/web'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+          folder: build/web
