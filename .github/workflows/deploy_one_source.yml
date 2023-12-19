@@ -19,7 +19,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://vikmind.github.io/fldeploy/${{ github.head_ref }}/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

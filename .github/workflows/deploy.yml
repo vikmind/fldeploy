@@ -16,7 +16,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -38,6 +38,7 @@ jobs:
       - name: Build flutter web
         run: flutter build web -t lib/main.dart --base-href /fldeploy/${{ github.head_ref }}/
       - name: Deploy 🚀
+        id: github-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/web
