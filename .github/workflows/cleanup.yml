@@ -22,5 +22,5 @@ jobs:
           ref: gh-pages
       - uses: EndBug/add-and-commit@v9
         with:
-          remove: ./${{ github.head_ref }}
+          remove: "-r ./${{ github.head_ref }}"
           message: "Remove ${{ github.head_ref }}"
