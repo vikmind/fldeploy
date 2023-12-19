@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             build-pubspec-
       - name: Build flutter web
-        run: flutter build web -t lib/main.dart -base-href /${{ github.repository }}/$
+        run: flutter build web -t lib/main.dart --base-href /${{ github.repository }}/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
